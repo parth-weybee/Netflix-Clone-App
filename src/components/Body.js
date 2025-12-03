@@ -1,12 +1,12 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import Browse from "./Browse"
-import Login from "./Login"
-import Header from "./Header"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Browse from "./Browse";
+import Home from "./Home";
+import Auth from "./Auth";
 
 const Body = () => {
+  
   return (
     <>
-      <Header />
       <RouterProvider router={router}/>
     </>
   )
@@ -15,11 +15,15 @@ const Body = () => {
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Login/>
+        element: <Home/>
     },
     {
         path: "/browse",
         element: <Browse/>
+    },
+    {
+      path: "/auth",
+      element: <Auth/>
     }
 ])
 
