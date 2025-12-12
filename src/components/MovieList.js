@@ -5,7 +5,6 @@ const MovieList = ({ title, list }) => {
     const containerRef = useRef();
     const [isAtLeft,setIsAtLeft] = useState(false);
     const [isAtRight,setIsAtRight] = useState(true);
-
 const scroll = (direction) => {
     const amount = 300;
     
@@ -24,8 +23,8 @@ const scroll = (direction) => {
         className="flex overflow-x-hidden scroll-smooth"
         ref={containerRef}
       >
-        {list?.map((p, i) => {
-          return <MovieCard key={i} movie={{}} />;
+        {list?.map((movie, i) => {
+          return <MovieCard key={i} movie={movie} />;
         })}
       </div>
       <div className="flex justify-between absolute top-[50%] left-[-2px] w-full">

@@ -1,10 +1,35 @@
 import { useSelector } from "react-redux";
-import { TEXT_LANG } from "../utils/constants";
+import { GEMENI_API, TEXT_LANG } from "../utils/constants";
 import { useRef } from "react";
 
 
 const GptSearch = () => {
   const currentLang = useSelector(store => store.lang?.selectedLang);
+  const searchPrompt = useRef();
+  const handleSubmit = async ()=>
+  {
+     const prompt = "recommende me 10 movies based on given prompt: \"" + searchPrompt + "\" in format of comma seperated names like Ra.One,Baaghi,Dilwale,Shaandar,Aankhen,Agent Vinod,Dostana,Khoobsurat,Mr X,Baby";
+     console.log(process.env.REACT_APP_GEMENI_API_KEY);
+     const res = await fetch(GEMENI_API,{
+      method: "POST",
+      headers: {
+        "x-goog-api-key": process.env.REACT_APP_GEMENI_API_KEY,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        contents: [
+         { parts: [
+            {
+              text: prompt
+            }
+          ]}
+        ]
+      })
+     })
+     const data = await res.json();
+     console.log(data);
+
+  };
   return (
     <div className="flex h-[100vh] justify-center items-center">
        <div className="fixed -z-10 w-full">
@@ -15,7 +40,7 @@ const GptSearch = () => {
         />
       </div>
         <form className="p-2 bg-transparent w-11/12 lg:w-1/2 grid grid-flow-col" onSubmit={(e)=> e.preventDefault()}>
-            <input ref={queryText} type="text" className="bg-white grid-cols-10 p-3 my-2" placeholder={TEXT_LANG[currentLang]?.placeholder}/>
+            <input ref={searchPrompt} type="text" className="bg-white grid-cols-10 p-3 my-2" placeholder={TEXT_LANG[currentLang]?.placeholder}/>
             <button className="grid-cols-2 bg-red-600 p-3 my-2 text-white" onClick={handleSubmit}>{TEXT_LANG[currentLang]?.button}</button>
         </form>
     </div>

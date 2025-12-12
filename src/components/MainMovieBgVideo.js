@@ -1,11 +1,11 @@
 import React from "react";
 
-const MainMovieBgVideo = () => {
+const MainMovieBgVideo = ({video}) => {
   return (
     <div className="absolute top-0 w-full h-[90vh] -z-10">
       <iframe
         className="w-full h-full"
-        src="https://www.youtube.com/embed/vkcENinRJ-g?autoplay=1&mute=1"
+        src={`https://www.youtube.com/embed/${video?.key}?autoplay=1&mute=1`}
         referrerPolicy="strict-origin-when-cross-origin"
         allow="autoplay"
         allowFullScreen

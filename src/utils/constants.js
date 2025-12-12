@@ -32,3 +32,33 @@ export const TEXT_LANG = {
         button: "Buscar"
     }
 }
+
+export const TMDB_URL = "https://api.themoviedb.org/3/movie/";
+
+export const IMG_URL = "https://image.tmdb.org/t/p/w200/";
+
+export const constantMovieList = [
+    {
+        title: "Now Playing Movies",
+        name: "nowPlaying",
+        url: "now_playing"
+    },
+    {
+        title: "Popular Movies",
+        name: "popular",
+        url: "popular",
+    },
+    {
+        title: "Upcoming Movies",
+        name: "upcoming",
+        url: "upcoming"
+    }
+    ,
+    {
+        title: "Top Rated Movies",
+        name: "topRated",
+        url: "top_rated",
+    }
+]
+
+export const GEMENI_API = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-preview:generateContent";
